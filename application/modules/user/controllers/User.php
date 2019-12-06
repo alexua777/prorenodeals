@@ -625,4 +625,26 @@ class User extends MX_Controller {
 		$lay['client_testimonial']="inc/footerclient_logo";
 		$this->layout->view('skill_list',$lay,$data,'normal');
 	}
+	public function checkmail(){
+		$to="asish9735@gmail.com";
+		$subject="This is a mail ".time();
+		$contents="new content date time".time();
+		$configs = mail_config();
+		//$configs['protocol']='sendmail';
+		//$configs['smtp_host']='vps.prorenodeals.com';
+		//$configs['smtp_port']=465;
+		$this->load->library('email');
+		$this->email->initialize($configs);
+        $this->email->from(setting_map('smtp_user'),setting_map('smtp_from_name'));
+        $this->email->to($to);
+        $this->email->set_newline("\r\n");
+        $this->email->set_mailtype("html");
+        $this->email->subject($subject);
+        $this->email->message($contents);
+        $filestatus=$this->email->send();
+       // $this->email->clear(TRUE);
+        //return  $filestatus;
+         echo $this->email->print_debugger(); 
+         echo 'ok';
+	}
 }
