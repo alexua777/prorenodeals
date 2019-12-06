@@ -218,15 +218,7 @@ function &DB($params = '', $query_builder_override = NULL)
 	{
 		$DB->query('SET SESSION sql_mode="STRICT_ALL_TABLES"');
 	}else{
-		$DB->query('SET SESSION sql_mode =
-					REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-					@@sql_mode,
-					"STRICT_ALL_TABLES,", ""),
-					",STRICT_ALL_TABLES", ""),
-					"STRICT_ALL_TABLES", ""),
-					"STRICT_TRANS_TABLES,", ""),
-					",STRICT_TRANS_TABLES", ""),
-					"STRICT_TRANS_TABLES", "")');
+		$DB->query('SET SESSION sql_mode =""');
 	}
 	return $DB;
 }
