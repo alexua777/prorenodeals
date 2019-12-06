@@ -68,10 +68,8 @@ $lang = $this->session->userdata('lang');
             <?php /* if($vals->terms=='Y'){ ?>
             <li><a href="<?php echo  base_url()?>information/info/terms_condition"><?php echo __('terms_&_conditions','Terms & Conditions'); ?></a></li>
             <?php } */ ?>
-
             <li><a href="<?php echo  base_url()?>information/info/service_agreement_clients"><?php echo __('service_provider_','Service Agreement for Clients'); ?></a></li>
             <li><a href="<?php echo  base_url()?>information/info/service_agreement_contractors"><?php echo __('service_provider_','Service Agreement for Contractors'); ?></a></li>
-
             <?php /* if($vals->refund=='Y'){ ?>
             <li><a href="<?php echo  base_url()?>information/info/refund_policy"><?php echo __('refund_policy','Refund Policy'); ?></a></li>
             <?php } */ ?>
@@ -216,10 +214,12 @@ $lang = $this->session->userdata('lang');
 </div>
 <!--page-content end (start in header.php)-->
 
-<link href="<?=CSS?>bootstrap-datetimepicker.css" rel="stylesheet" type="text/css" />
+<?php if($current_page!='home'){?>
 <script src="<?=JS?>moment-with-locales.js"></script> 
 <script src="<?=JS?>bootstrap-datetimepicker.min.js"></script> 
+<?php }?>
 <script src="<?php echo ASSETS;?>plugins/cookie-bar/dist/jquery.cookieMessage.min.js"></script> 
+<?php if($current_page!='home'){?>
 <script type="text/javascript">
 
 	$(function () {
@@ -235,8 +235,11 @@ $lang = $this->session->userdata('lang');
 	});
 
 </script> 
+
+<?php }?>
 <script src="<?=JS?>popper.min.js"></script> 
 <script src="<?=JS?>bootstrap.min.js"></script> 
+<?php if($this->session->userdata('user')){?>
 <script>
 
 var is_open_notification = 0;
@@ -520,6 +523,7 @@ console.log(is_open_notification); */
 
 
 </script>
+<?php }?>
 <?php
 
       if($current_page=='jobdetails')
@@ -585,25 +589,19 @@ console.log(is_open_notification); */
 
       ?>
 
-<!--<script src="<?//=JS?>jquery.parallax.js"></script> 
 
-<script src="<?//=JS?>modernizr-2.6.2.min.js"></script> 
 
-<script src="<?//=JS?>revolution-slider/js/jquery.themepunch.revolution.min.js"></script> 
 
-<script src="<?//=JS?>jquery.nivo.slider.pack.js"></script> 
+<?php
+ if($current_page!='home'){
+	$footerjs=array('superfish.js', 'tytabs.js','jquery.gmap.min.js','circularnav.js','imagesloaded.pkgd.min.js','jflickrfeed.js','waypoints.min.js','spectrum.js','custom.js'); 
+ }else{
+	$footerjs=array('custom.js'); 
+ }
+$this->minify->js($footerjs);
+		echo $this->minify->deploy_js(FALSE, 'footer.min.js');
+?>
 
-<script src="<?//=JS?>jquery.prettyPhoto.js"></script>--> 
-
-<script src="<?=JS?>superfish.js"></script> 
-<script src="<?=JS?>tytabs.js"></script> 
-<script src="<?=JS?>jquery.gmap.min.js"></script> 
-<script src="<?=JS?>circularnav.js"></script> 
-<script src="<?=JS?>imagesloaded.pkgd.min.js"></script> 
-<script src="<?=JS?>jflickrfeed.js"></script> 
-<script src="<?=JS?>waypoints.min.js"></script> 
-<script src="<?=JS?>spectrum.js"></script> 
-<script src="<?=JS?>custom.js"></script> 
 <script>
 
 	var $ = jQuery;
@@ -829,7 +827,7 @@ console.log(is_open_notification); */
     tooltipObj.initFormFieldTooltip();
 
 </script>-->
-
+<?php if($current_page!='home'){?>
 <div id="fb-root"></div>
 <script type="text/javascript">
 
@@ -896,6 +894,7 @@ function select2load(){
 }
 
 </script> 
+<?php }?>
 <script>
 
 function changeLang(ele,lang){
