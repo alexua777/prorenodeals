@@ -1,0 +1,621 @@
+<?php
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
+class Projecthourly extends MX_Controller {
+
+    /**
+     * Description: this used for check the user is exsts or not if exists then it redirect to this site
+     * Paremete: username and password 
+     */
+    public function __construct() {
+        $this->load->model('projectdashboard_model');
+		$this->load->model('dashboard/dashboard_model');
+		$this->load->model('findtalents/findtalents_model');
+		$this->load->model('notification/notification_model');
+		$this->offset = 10;
+		$this->load->library('pagination');
+        parent::__construct();
+		
+    }
+
+    public function employer(){
+		      if(!$this->session->userdata('user')){
+			redirect(VPATH."login/");	
+		}  
+		
+		$user=$this->session->userdata('user');
+           
+        $limit=0;   
+        $data['pid']=$pid=$this->uri->segment(3);
+		
+		$data['project_name']=$this->auto_model->getFeild('title','projects','project_id',$data['pid']);
+		
+		$data['project_details']=$this->projectdashboard_model->getprojectdetails($data['pid']);
+		
+		
+		
+        $breadcrumb=array(
+            array(
+                    'title'=>'Project Dashboard','path'=>''
+            )
+        );
+
+        ////////////////////////pagination start////////////////////////////
+		$search_parameters = $this->input->get();
+        $data['search_parameters'] = $search_parameters;
+        $pagination_string = '';
+        if (isset($search_parameters['limit'])) {
+            if ($search_parameters['limit'] != "" && is_numeric($search_parameters['limit'])) {
+                $limit = $search_parameters['limit'];
+            }
+
+            unset($search_parameters['limit']);
+            unset($search_parameters['page']);
+        }
+        if (count($search_parameters) > 1) {
+            $pagination_string = http_build_query($search_parameters);
+        }
+		
+		////////////////////////pagination end//////////////////////////////
+		
+		$data['tracker_details']=$this->projectdashboard_model->getprojecttracker($data['pid'],$search_parameters, $this->offset, $limit);
+		
+		$data['pagination'] = $this->projectdashboard_model->listing_search_pagination($data['pid'],$pagination_string, $this->offset);
+		/////////////////////////For Manual Hour/////////////////////////////
+		$data['manual_tracker_details']=$this->projectdashboard_model->getprojecttracker_manual($data['pid']);
+		/////////////////////////For Manual Hour/////////////////////////////
+		
+        $data['breadcrumb']=$this->autoload_model->breadcrumb($breadcrumb,'Job Details');
+		$head['current_page']='project_dashboard';
+		
+		$head['ad_page']='project_dashboard';
+
+        $load_extra=array();
+
+        $data['load_css_js']=$this->autoload_model->load_css_js($load_extra);
+
+        $this->layout->set_assest($head);
+
+        $this->autoload_model->getsitemetasetting();
+
+        $lay['client_testimonial']="inc/footerclient_logo";
+        
+		$sess_user_id_p=$user[0]->user_id;
+		$user_id=$this->auto_model->getFeild('user_id','projects','project_id',$pid);
+		if($sess_user_id_p==$user_id){
+			$data['showpaush']=1;	
+		}else{
+			$data['showpaush']=0;	
+			redirect(VPATH."dashboard");
+		}
+		$data['currentstats']=$this->auto_model->getFeild('status','projects','project_id',$pid);
+		
+
+
+
+        $this->layout->view('client_dashboard',$lay,$data,'normal');
+
+        
+    }
+	
+	public function freelancer()
+	{
+		if(!$this->session->userdata('user'))
+		{
+			redirect(VPATH."login/");	
+		}  
+		
+		$user=$this->session->userdata('user');
+        $limit=0;   
+            
+        $data['pid']=$pid=  $this->uri->segment(3);
+		
+		$data['project_name']=$this->auto_model->getFeild('title','projects','project_id',$data['pid']);
+		
+		$data['project_details']=$this->projectdashboard_model->getprojectdetails($data['pid']);
+		
+		
+		
+        $breadcrumb=array(
+            array(
+                    'title'=>'Project Dashboard','path'=>''
+            )
+        );
+
+        
+		////////////////////////pagination start////////////////////////////
+		$search_parameters = $this->input->get();
+        $data['search_parameters'] = $search_parameters;
+        $pagination_string = '';
+        if (isset($search_parameters['limit'])) {
+            if ($search_parameters['limit'] != "" && is_numeric($search_parameters['limit'])) {
+                $limit = $search_parameters['limit'];
+            }
+
+            unset($search_parameters['limit']);
+            unset($search_parameters['page']);
+        }
+        if (count($search_parameters) > 1) {
+            $pagination_string = http_build_query($search_parameters);
+        }
+		
+		////////////////////////pagination end//////////////////////////////
+		
+		$data['tracker_details']=$this->projectdashboard_model->getprojecttracker($data['pid'],$search_parameters, $this->offset, $limit);
+		
+		$data['pagination'] = $this->projectdashboard_model->listing_search_pagination($data['pid'],$pagination_string, $this->offset);
+				/////////////////////////For Manual Hour/////////////////////////////
+		$data['manual_tracker_details']=$this->projectdashboard_model->getprojecttracker_manual($data['pid']);
+		/////////////////////////For Manual Hour/////////////////////////////
+		
+        $data['breadcrumb']=$this->autoload_model->breadcrumb($breadcrumb,'Job Details');
+		$head['current_page']='project_dashboard';
+		
+		$head['ad_page']='project_dashboard';
+
+        $load_extra=array();
+
+        $data['load_css_js']=$this->autoload_model->load_css_js($load_extra);
+
+        $this->layout->set_assest($head);
+
+        $this->autoload_model->getsitemetasetting();
+
+        $lay['client_testimonial']="inc/footerclient_logo";
+
+        $this->layout->view('freelancer_dashboard',$lay,$data,'normal');
+
+        
+    	
+	}
+	public function screenshot()
+	{
+		if(!$this->session->userdata('user'))
+		{
+			redirect(VPATH."login/");	
+		}  
+		
+		$user=$this->session->userdata('user');
+         
+		$data['tracker_id']=$this->uri->segment(3);  
+            
+        $data['pid']=$this->auto_model->getFeild('project_id','project_tracker','id',$data['tracker_id']);
+		$data['project_name']=$this->auto_model->getFeild('title','projects','project_id',$data['pid']);
+		
+		$data['screenshot_date']=$this->auto_model->getFeild('start_time','project_tracker','id',$data['tracker_id']);
+		
+		$data['tracker_details']=$this->projectdashboard_model->getscreenshot($data['tracker_id']);
+		
+        $breadcrumb=array(
+            array(
+                    'title'=>'Project Sreenshot','path'=>''
+            )
+        );
+
+        
+        $data['breadcrumb']=$this->autoload_model->breadcrumb($breadcrumb,'Job Details');
+		$head['current_page']='project_dashboard';
+		
+		$head['ad_page']='project_dashboard';
+
+        $load_extra=array();
+
+        $data['load_css_js']=$this->autoload_model->load_css_js($load_extra);
+
+        $this->layout->set_assest($head);
+
+        $this->autoload_model->getsitemetasetting();
+
+        $lay['client_testimonial']="inc/footerclient_logo";
+
+        $this->layout->view('screenshot',$lay,$data,'normal');
+
+        
+    	
+	}
+	public function paushjob(){
+		if(!$this->session->userdata('user'))
+		{
+			redirect(VPATH."login/");	
+		}
+		$pid=$this->input->post('id');
+		
+		$user=$this->session->userdata('user');
+		$user_id=$user[0]->user_id;
+		$upd=$this->projectdashboard_model->paushProject($pid,$user_id);	
+		if($upd)
+		{
+			$bidder_id=$this->auto_model->getFeild('bidder_id','projects','project_id',$pid);
+			$bidder_mail=$this->auto_model->getFeild('email','user','user_id',$bidder_id);
+			$bidder_name=$this->auto_model->getFeild('fname','user','user_id',$bidder_id)." ".$this->auto_model->getFeild('lname','user','user_id',$bidder_id);
+			$employer_id=$this->auto_model->getFeild('user_id','projects','project_id',$pid);
+			$projects_title=$this->auto_model->getFeild('title','projects','project_id',$pid);
+			/*$from=ADMIN_EMAIL;
+			$to=$employer_email;
+			$template='job_closed_notification';
+			$data_parse=array('title'=>$projects_title, 
+								'name'=>ucwords($bidder_name)
+			);
+			$this->auto_model->send_email($from,$to,$template,$data_parse);
+			 */
+			 $data_notification=array( 
+			   "from_id" =>$employer_id,
+			   "to_id" =>$employer_id,
+			   "notification" =>"You have successfully paush the project : ".$projects_title,
+			   "add_date"  => date("Y-m-d")
+			 );
+			 $data_notic=array( 
+			   "from_id" =>$employer_id,
+			   "to_id" =>$bidder_id,
+			   "notification" =>"Employer has successfully paush the project ".$projects_title,
+			   "add_date"  => date("Y-m-d")
+			 );
+			 
+			 $this->dashboard_model->insert_notification($data_notification);
+			 
+			 $this->dashboard_model->insert_notification($data_notic);
+			
+				
+		}
+		ob_start();
+		ob_clean();
+		echo $upd;
+		
+		
+	}
+	//******************************Newly Added for manual hour option*********************
+	
+	public function manual_hour()
+	{
+		
+		if(!$this->session->userdata('user'))
+		{
+			redirect(VPATH."login/");	
+		}  
+		
+		$user=$this->session->userdata('user');
+        $limit=0;   
+            
+        $data['pid'] = $pid =  $this->uri->segment(3);
+		
+		$data['bidder_id']=$bidder_id=$user[0]->user_id; 
+		$allbidder_id=explode(",",$this->auto_model->getFeild('bidder_id','projects','project_id',$data['pid']));
+		
+		//$data['bidder_id']=$bidder_id=$this->auto_model->getFeild('bidder_id','projects','project_id',$data['pid']);
+		if($bidder_id && $allbidder_id && in_array($bidder_id,$allbidder_id)){
+		
+		}else{
+		redirect(VPATH."dashboard");
+		}
+		//$data['project_details']=$this->projectdashboard_model->getprojectdetails($data['pid']);
+		
+		
+		
+        $breadcrumb=array(
+            array(
+                    'title'=>'Project Dashboard','path'=>''
+            )
+        );
+		
+		$data['breadcrumb']=$this->autoload_model->breadcrumb($breadcrumb,'Job Details');
+		$head['current_page']='project_dashboard';
+		
+		$head['ad_page']='project_dashboard';
+
+        $load_extra=array();
+
+        $data['load_css_js']=$this->autoload_model->load_css_js($load_extra);
+
+        $this->layout->set_assest($head);
+
+        $this->autoload_model->getsitemetasetting();
+
+        $lay['client_testimonial']="inc/footerclient_logo";
+        
+		if($this->input->post('submit'))
+		{      
+			
+            $act = $this->input->post("activity");   
+			$post_data["project_id"]=  $pid;
+			$post_data["worker_id"]=  $bidder_id;
+			$post_data["start_time"]=  $this->input->post("start_date");
+			$post_data["stop_time"]=  $this->input->post("to_date");
+			$post_data["hour"]=  $this->input->post("duration");
+			$post_data["minute"]=  $this->input->post("minute");
+			$post_data["activity"] = !empty($act) ? implode(',', $act) : '' ;
+			$post_data["comment"] = $this->input->post('comment');
+		  
+			$insert=  $this->projectdashboard_model->insertTrackerManual($post_data);
+			
+			$invoice['data'] = array(
+				'project_id' => $pid,
+				'project_type' => 'H',
+				'created_date' => date('Y-m-d'),
+				'milestone_id' => $insert,
+				'payment_status' => 'NOT PAID',
+				'hr' => $this->input->post("duration"),
+			);
+			$invoice['table'] = 'invoice';
+			$invoice_id = insert($invoice, TRUE);
+			
+			$this->db->where(array('id' => $insert))->update('project_tracker_manual', array('invoice_id' => $invoice_id));
+			
+			$postdata['to_id']=$this->auto_model->getFeild('user_id','projects','project_id',$pid);
+			$postdata['from_id']=$bidder_id;
+			$title=$this->auto_model->getFeild('title','projects','project_id',$pid);
+			$username=$this->auto_model->getFeild('username','user','user_id',$bidder_id);
+//		projecthourly/employer/
+			//$postdata['notification']='Manual hour requested by <a href="'.VPATH.'clientdetails/showdetails/'.$bidder_id.'">'.$username.'</a> for project <a href="'.VPATH.'dashboard/myproject_clientgg">'.$title.'</a>';
+			
+			/* $postdata['notification']='Manual hour requested by <a href="'.VPATH.'clientdetails/showdetails/'.$bidder_id.'">'.$username.'</a> for project <a href="'.VPATH.'projectdashboard/employer/'.$pid.'">'.$title.'</a>';
+			
+			//$postdata['notification']='Manual hour requested by <a href="'.VPATH.'clientdetails/showdetails/'.$bidder_id.'">'.$username.'</a> for project <a href="'.VPATH.'projecthourly/employer">'.$pid.'</a>';
+			$postdata['add_date']=date('Y-m-d');
+			$this->projectdashboard_model->insert_Notification($postdata);*/
+			
+			
+			$notification = 'Manual hour requested by '.$username.' for project '.$title;
+			//$link = 'clientdetails/showdetails/'.$bidder_id;
+			$link = 'projectdashboard/hourly_employer/'.$pid;
+			$this->notification_model->log($postdata['from_id'], $postdata['to_id'], $notification, $link);
+			
+			$from=ADMIN_EMAIL;
+			$to=$this->auto_model->getFeild('email','user','user_id',$postdata['to_id']);
+			$employer=$this->auto_model->getFeild('username','user','user_id',$postdata['to_id']);
+			$template='manual_hour_request_freelancer';
+			$data_parse=array('username'=>$employer,
+							  'freelancer'=>$username,
+							  'project'=>$title
+							  );
+			$this->auto_model->send_email($from,$to,$template,$data_parse);
+			
+			
+			
+			if($insert){
+				
+				$this->session->set_flashdata('msg_sent',"Message sent successfully."); 
+				//redirect(base_url()."projecthourly/freelancer/".$pid);                        
+			}
+			else{
+				
+				$this->session->set_flashdata('msg_failed',"Message sending failed"); 
+				//redirect(base_url()."projecthourly/freelancer/".$pid);                        
+			} 
+			
+		
+		}
+		//redirect(base_url()."projectdashboard_new/hourly_freelancer/".$pid); 		
+		redirect(base_url()."projectdashboard/hourly_freelancer/".$pid); 		
+		
+	}
+	
+	public function change_status()
+	{
+		$id = $this->uri->segment(3);	
+		$project_id = $this->uri->segment(4);
+		$type = $this->uri->segment(5);
+		$data['status'] = 'Y';
+		$this->db->where('id',$id);	
+		$this->db->where('project_id',$project_id);		
+		$update = $this->db->update('project_tracker_manual', $data); 	
+		
+		
+		$postdata['from_id']=$this->auto_model->getFeild('user_id','projects','project_id',$project_id);
+		$bidder_id=$this->auto_model->getFeild('bidder_id','projects','project_id',$project_id);
+		$postdata['to_id']=$bidder_id;
+		$title=$this->auto_model->getFeild('title','projects','project_id',$project_id);
+		$username=$this->auto_model->getFeild('username','user','user_id',$postdata['from_id']);		
+		/* $postdata['notification']='Your manual hour requested for project <a href="'.VPATH.'projecthourly/freelancer/'.$project_id.'">'.$title.'</a> has been accepted by <a href="'.VPATH.'clientdetails/showdetails/'.$postdata['from_id'].'">'.$username.'</a>';
+		$postdata['add_date']=date('Y-m-d');
+		$this->projectdashboard_model->insert_Notification($postdata); */
+
+		$notification = 'Your manual hour requested for project '.$title.' has been accepted by '.$username;
+		$link = 'projecthourly/freelancer/'.$project_id;
+		$this->notification_model->log($postdata['from_id'], $postdata['to_id'], $notification, $link);
+		
+		$from=ADMIN_EMAIL;
+		$to=$this->auto_model->getFeild('email','user','user_id',$bidder_id);
+		$bidder_name=$this->auto_model->getFeild('username','user','user_id',$bidder_id);
+		$template='manual_hour_request_accepted';
+		$data_parse=array('username'=>$bidder_name,
+						  'project'=>$title
+						  );
+		$this->auto_model->send_email($from,$to,$template,$data_parse);
+		
+		
+		$postdata1['to_id']=$this->auto_model->getFeild('user_id','projects','project_id',$project_id);
+		$bidder_id=$this->auto_model->getFeild('bidder_id','projects','project_id',$project_id);
+		$postdata1['from_id']=$bidder_id;
+		$title=$this->auto_model->getFeild('title','projects','project_id',$project_id);		
+		/*$postdata1['notification']='Manual hour requested for project <a href="'.VPATH.'projecthourly/employer/'.$project_id.">'".$title.'</a> has been accepted.';
+		$postdata1['add_date']=date('Y-m-d');
+		$this->projectdashboard_model->insert_Notification($postdata1); */
+		
+		$notification = 'Manual hour requested for project '.$title.' has been accepted.';
+		$link = 'projecthourly/employer/'.$project_id;
+		$this->notification_model->log($postdata1['from_id'], $postdata1['to_id'], $notification, $link);
+		
+		$from=ADMIN_EMAIL;
+		$to=$this->auto_model->getFeild('email','user','user_id',$postdata1['to_id']);
+		$employer_name=$this->auto_model->getFeild('username','user','user_id',$postdata1['to_id']);
+		$template='manual_hour_request_accepted';
+		$data_parse1=array('username'=>$employer_name,
+						  'project'=>$title
+						  );
+		$this->auto_model->send_email($from,$to,$template,$data_parse1);
+		
+		
+		if(get('next')){
+			$next = get('next');
+		}else{
+			if($type=="E"){
+				$next = 'projectdashboard_new/hourly_employer/'.$project_id;
+			}else if($type=="F"){
+				$next = 'projectdashboard_new/hourly_freelancer/'.$project_id;
+			}
+		}
+		
+		if ($update) {			
+			$this->session->set_flashdata('succ_msg', 'Activation Successfully Done...');
+				
+		} else {
+			$this->session->set_flashdata('error_msg', 'unable to update');
+			
+		}
+		redirect(base_url($next));
+		
+	}	
+	
+	
+	public function manual_hour_decline_employer()
+	{
+		if(!$this->session->userdata('user'))
+		{
+			redirect(VPATH."login/");	
+		}		         
+            
+        $data['id'] = $id =  $this->uri->segment(3);
+		$data['pid'] = $pid =  $this->uri->segment(4);
+		
+		
+        $breadcrumb=array(
+            array(
+                    'title'=>'Project Dashboard','path'=>''
+            )
+        );
+		
+		$data['breadcrumb']=$this->autoload_model->breadcrumb($breadcrumb,'Job Details');
+		$head['current_page']='project_dashboard';
+		
+		$head['ad_page']='project_dashboard';
+
+        $load_extra=array();
+
+        $data['load_css_js']=$this->autoload_model->load_css_js($load_extra);
+
+        $this->layout->set_assest($head);
+
+        $this->autoload_model->getsitemetasetting();
+
+        $lay['client_testimonial']="inc/footerclient_logo";
+        
+		if($this->input->post('submit'))
+		{	
+			$post_data["hour"]=  $this->input->post("hour");
+			$post_data["minute"]=  $this->input->post("minute");
+			$post_data["status"]= "D";			
+		    $this->db->where('id',$id);	
+			$this->db->where('project_id',$pid);		
+			$update = $this->db->update('project_tracker_manual', $post_data);		
+			
+			
+			$postdata1['from_id']=$this->auto_model->getFeild('user_id','projects','project_id',$pid);
+			$bidder_id=$this->auto_model->getFeild('bidder_id','projects','project_id',$pid);
+			$postdata1['to_id']=$bidder_id;
+			$title=$this->auto_model->getFeild('title','projects','project_id',$pid);
+			$username=$this->auto_model->getFeild('username','user','user_id',$postdata1['from_id']);			
+			/* $postdata1['notification']='Manual hour requested for project <a href="'.VPATH.'projecthourly/freelancer/'.$pid.'">'.$title.'</a> has been declined by <a href="'.VPATH.'clientdetails/showdetails/'.$postdata1['from_id'].'">'.$username.'</a>.';	
+			$postdata1['add_date']=date('Y-m-d');	
+			$this->projectdashboard_model->insert_Notification($postdata1); */ 
+			
+		$notification = 'Manual hour requested for project '.$title.' has been declined by '.$username;
+		$link = 'projecthourly/freelancer/'.$pid;
+		$this->notification_model->log($postdata1['from_id'], $postdata1['to_id'], $notification, $link);
+			
+			$from=ADMIN_EMAIL;
+			$to=$this->auto_model->getFeild('email','user','user_id',$bidder_id);
+			$bidder_name=$this->auto_model->getFeild('username','user','user_id',$bidder_id);
+			$template='manual_hour_declined_employer';
+			$data_parse=array('username'=>$bidder_name,
+							  'project'=>$title
+							  );
+			$this->auto_model->send_email($from,$to,$template,$data_parse);
+				
+			if(get('next')){
+				$next = get('next');
+			}	
+
+			if($update){
+				$this->session->set_flashdata('msg_sent',"Message sent successfully."); 
+				redirect(base_url($next));                        
+			}
+			else{
+				$this->session->set_flashdata('msg_failed',"Message sending failed"); 
+				redirect(base_url($next));                        
+			} 
+		
+		}	
+	}
+	public function delete_request()
+	{
+		$id = $this->uri->segment(3);	
+		$project_id = $this->uri->segment(4);
+		$this->db->delete('project_tracker_manual', array('id' => $id,'project_id' => $project_id)); 
+		
+		$postdata1['to_id']=$this->auto_model->getFeild('user_id','projects','project_id',$project_id);
+		$bidder_id=$this->auto_model->getFeild('bidder_id','projects','project_id',$project_id);
+		$postdata1['from_id']=$bidder_id;
+		$title=$this->auto_model->getFeild('title','projects','project_id',$project_id);
+		$username=$this->auto_model->getFeild('username','user','user_id',$bidder_id);		
+		/* $postdata1['notification']='Manual hour requested for project <a href="'.VPATH.'projecthourly/employer/'.$project_id.'">'.$title.'</a> has been deleted by <a href="'.VPATH.'clientdetails/showdetails/'.$bidder_id.'">'.$username.'</a>.';
+		$postdata1['add_date']=date('Y-m-d');
+		$this->projectdashboard_model->insert_Notification($postdata1); */
+		
+		$notification = 'Manual hour requested for project '.$title.' has been deleted by '.$username;
+		$link = 'projecthourly/employer/'.$project_id;
+		$this->notification_model->log($postdata1['from_id'], $postdata1['to_id'], $notification, $link);
+		
+		$from=ADMIN_EMAIL;
+		$to=$this->auto_model->getFeild('email','user','user_id',$postdata1['to_id']);
+		$employer_name=$this->auto_model->getFeild('username','user','user_id',$postdata1['to_id']);
+		$template='manual_hour_declined_freelancer';
+		$data_parse=array('username'=>$employer_name,
+						  'project'=>$title
+						  );
+		$this->auto_model->send_email($from,$to,$template,$data_parse);
+		
+		if(get('next')){
+			$next = get('next');
+		}else{
+			if($type=="E"){
+				$next = 'projectdashboard_new/hourly_employer/'.$project_id;
+			}else if($type=="F"){
+				$next = 'projectdashboard_new/hourly_freelancer/'.$project_id;
+			}
+		}
+		redirect(base_url($next));
+	}
+
+	public function getactivity(){
+		$act = get('activity');
+		if(!empty($act)){
+			$res = $this->db->where("id IN($act)")->get('project_activity')->result_array();
+			if(count($res) > 0){
+				echo '<ul class="list-group">';
+				foreach($res as $k => $v){
+					echo '<li class="list-group-item">'.$v['task'].'</li>';
+				}
+				echo "</ul>";
+			}else{
+				echo 'No activity choosen';
+			}
+		}
+	}
+	
+	public function approve_activity($act_id=''){
+		$user=$this->session->userdata('user');
+		$uid = $user[0]->user_id;
+		$project  = $this->input->get('project');
+		$this->db->where(array('activity_id' => $act_id ,'assigned_to' => $uid))->update('project_activity_user' , array('approved' => 'Y'));
+		redirect(base_url('projectdashboard/freelancer/'.$project));
+	}
+	
+	public function deny_activity($act_id=''){
+		$user=$this->session->userdata('user');
+		$uid = $user[0]->user_id;
+		$project  = $this->input->get('project');
+		$this->db->where(array('activity_id' => $act_id ,'assigned_to' => $uid))->delete('project_activity_user');
+		redirect(base_url('projectdashboard/freelancer/'.$project));
+	}
+}

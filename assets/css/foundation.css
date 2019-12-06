@@ -1,0 +1,102 @@
+.reveal-modal-bg {
+	position:fixed;
+	height:100%;
+	width:100%;
+	background:#000;
+	background:rgba(0, 0, 0, 0.45);
+	z-index:40;
+	display:none;
+	top:0;
+	left:0
+}
+.reveal-modal {
+	background:#fff;
+	visibility:hidden;
+	display:none;
+	top:100px;
+	left:50%;
+	margin-left:-260px;
+	width:520px;
+	position:absolute;
+	z-index:41;
+	padding:20px;
+	-webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.4);
+	box-shadow:0 0 10px rgba(0, 0, 0, 0.4)
+}
+.reveal-modal:first-child {
+	margin-top:0
+}
+.reveal-modal:last-child {
+	margin-bottom:0
+}
+.reveal-modal .close-reveal-modal {
+	font-size:32px;
+	line-height:.5;
+	position:absolute;
+	top: 15px;
+    right: 20px;
+	color:#333;
+	text-shadow:0 -1px 1px rbga(0, 0, 0, 0.6);
+	text-decoration:none;
+	cursor:pointer
+}
+.reveal-modal.small {
+	width:30%;
+	margin-left:-10%
+}
+.reveal-modal.medium {
+	width:40%;
+	margin-left:-20%
+}
+.reveal-modal.large {
+	width:60%;
+	margin-left:-30%
+}
+.reveal-modal.expand {
+	width:90%;
+	margin-left:-45%
+}
+.reveal-modal .row {
+	min-width:0
+}
+@media only screen and (max-width: 767px) {
+.reveal-modal-bg {
+position:absolute
+}
+.reveal-modal, .reveal-modal.small, .reveal-modal.medium, .reveal-modal.large, .reveal-modal.xlarge {
+width:80%;
+top:15px;
+left:50%;
+margin-left:-40%;
+padding:20px;
+height:auto
+}
+}
+.lt-ie8 .row {
+	max-width:1000px
+}
+
+.lt-ie8 .nav-bar li.has-flyout a {
+	padding-right:20px
+}
+.lt-ie8 .nav-bar li.has-flyout a:after {
+	border-top:none
+}
+.lt-ie8 input[type=submit].nice.button {
+	filter:chroma(color=#000);
+	position:relative;
+	top:-2px
+}
+.lt-ie8 input[type=submit].tiny.button {
+	padding:5px 5px 7px
+}
+.lt-ie8 input[type=submit].small.button {
+	padding:8px 7px 9px
+}
+.lt-ie8 input[type=submit].medium.button {
+	padding:9px 13px 9px
+}
+.lt-ie8 input[type=submit].large.button {
+	padding:9px 18px 10px
+}

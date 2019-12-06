@@ -1,0 +1,143 @@
+
+ListMessenger Light Upgrade
+Version:	2.2.1
+Website:	http://www.listmessenger.com
+Support:	http://forum.listmessenger.com
+Author:		Matt Simpson <msimpson@listmessenger.com>
+Tab Stop:	4 spaces
+================================================================================
+
+*IMPORTANT:
+If you are upgrading from ListMessenger Light 2.x to 2.2, then I have created a
+separate upgrade file called upgrade_2.x.txt in this directory to review.
+
+================================================================================
+
+ListMessenger 0.5.0 - ListMessenger Light 1.0.0:
+
+STEP 1)
+	Backup your existing listmessenger database. Do not continue unless you
+	have a valid backup of your existing listmessenger database. If you do
+	continue without a valid backup and something goes wrong your subscriber
+	base may be lost.
+
+	You can create a backup of your existing installation by using PHPMyAdmin
+	or any other database management tool's Export feature.
+
+STEP 2)
+	Now that you have backed up your existing installation's database:
+
+	Login via FTP to your webserver and rename your current listmessenger
+	program directory to "listmessenger_backup" or something to that effect.
+
+	In doing this, if something goes wrong during the upgrade, it will be very
+	simple for you to revert back to the original version.
+
+	Example, if your current listmessenger installation is running at:
+	http://www.yourdomain.com/listmessenger
+
+	Rename the listmessenger directory to listmessenger_backup, so that
+	it exists (non-functioning of course) at:
+	http://www.yourdomain.com/listmessenger_backup
+
+STEP 3)
+	Unpack the ListMessenger Light 2.2.1 distribution file with your favourite
+	upzip / untar program and rename the extracted directory to "listmessenger"
+	or whatever your previous installations directory was named.
+
+STEP 4)
+	Modify the contents of ./includes/config.inc.php to reflect the correct
+	database and database login information for your MySQL Server. This
+	information should be the identical connection information that was in
+	your previous versions config.inc.php file.
+
+	If your database connection information is not exactly as specified,
+	the upgrade script will not detect you had a previous version and will
+	therefore install a clean installation.
+
+	<NOTICE>
+	ListMessenger 0.5.0 - ListMessenger Light 1.0.0:
+	Do not overwrite this config.inc.php file with the config.inc.php file
+	from your previous version, the files have changed and will this cause
+	you confusion when you receive errors.
+	</NOTICE>
+
+	<TIP>
+	If you previously specified a table prefix (in the TABLES_PREFIX
+	constant) don't forget to add this to the new version as well.
+	</TIP>
+
+STEP 5)
+	Upload the entire ListMessenger directory tree (all folders and files)
+	to the same directory name as your previous ListMessenger installation
+	was under, on a web-server which meets the following requirements:
+	-> PHP 5.0.0+ (PHP 5.1.6+ highly recommended)
+		\_ pSpell is required for spell checking support.
+		\_ ListMessenger uses many of PHP's built in functions which cannot
+		   be disabled, such as: file_exists, fopen, fread, fwrite, ini_set
+		   ini_get, fsockopen, ob_start, session_start.
+	-> MySQL 5+
+
+STEP 6)
+	The folling directories, which by default reside within the ListMessenger
+	program directory need to be writable by the user that your web-server
+	and / or PHP runs as. This can generally be done through your FTP client
+	such as Filezilla, Transmit, CuteFTP, and setting the permissions to 777.
+
+	- public/files
+	- public/images
+	- private/backups
+	- private/logs
+	- private/tmp
+
+	Unix / Linux Web-Servers:
+	Please chmod the those directories to 777 using either your FTP client
+	or by command line by entering "chmod 777 directoryname".
+
+	Windows Web-Servers:
+	I believe that on most Windows servers directories are already writable
+	by the user in which your web-server runs; however, if they are not then
+	you should be able to set this information by right clicking on the
+	directories and allowing everyone to read / write data to them.
+
+STEP 7)
+	Point your web browser to the ListMessenger setup program located in
+	the ListMessenger program directory and follow the on-screen instructions
+	to upgrade to the current version.
+
+	Example: http://www.yourdomain.com/listmessenger/setup.php
+
+STEP 8)
+	After the upgrade has been completed, make sure you delete the
+	setup.php file AND setup directory from the ListMessenger directory root.
+
+	After you have verified everything is working correctly with your new
+	version you can also delete your old listmessenger_backup directory.
+
+SUMMARY)
+If you require upgrade assistance, it is available to you at a lower priority
+using our public forum which can be accessed by going to:
+	- http://forum.listmessenger.com
+
+If you would like to upgrade to ListMessenger Pro, we would be happy to
+complete the upgrade process for you after you purchase your licence, please
+contact sales@listmessenger.com for assistance. You can purchase
+ListMessenger Pro by creating an account in our ListMessenger Members
+Area at: https://www.listmessenger.com/members/
+
+LISTMESSENGER PRO PLUG)
+ListMessenger Light is available for both commercial and non-commercial use, but
+it does come with some restrictions. You should not use ListMessenger Light for
+mailing lists over 200 subscribers as this can cause your web and mail server
+major stresses. ListMessenger Light will continue to function if you go over the
+200 subscriber soft-limit; however, you will receive a nag screen stating that
+such a situation is not recommended. Please consider upgrading to ListMessenger
+Pro which was designed to handle lists of any size.
+
+Upgrading to ListMessenger Pro is easy, no database changes are required and
+your list will stay untouched. Simply delete the contents of your ListMessenger
+Light directory (minus "includes/config.inc.php") and upload the ListMessenger
+Pro files (and your Pro licence key) in their place.
+
+For a full comparison of features, please visit:
+http://www.listmessenger.com/features

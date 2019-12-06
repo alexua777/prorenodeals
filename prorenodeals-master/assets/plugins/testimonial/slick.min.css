@@ -1,0 +1,298 @@
+/* CCS */
+.slick-slider {
+	position:relative;
+	display:block;
+	box-sizing:border-box;
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	user-select:none;
+	-webkit-touch-callout:none;
+	-khtml-user-select:none;
+	-ms-touch-action:pan-y;
+	touch-action:pan-y;
+	-webkit-tap-highlight-color:transparent
+}
+.slick-list {
+	position:relative;
+	display:block;
+	overflow:hidden;
+	margin:0;
+	padding:0
+}
+.slick-list:focus {
+	outline:none
+}
+.slick-list.dragging {
+	cursor:pointer;
+	cursor:hand
+}
+.slick-slider .slick-track, .slick-slider .slick-list {
+	-webkit-transform:translate3d(0, 0, 0);
+	-moz-transform:translate3d(0, 0, 0);
+	-ms-transform:translate3d(0, 0, 0);
+	-o-transform:translate3d(0, 0, 0);
+	transform:translate3d(0, 0, 0)
+}
+.slick-track {
+	position:relative;
+	top:0;
+	left:0;
+	display:block;
+	margin-left:auto;
+	margin-right:auto
+}
+.slick-track:before, .slick-track:after {
+	display:table;
+	content:''
+}
+.slick-track:after {
+	clear:both
+}
+.slick-loading .slick-track {
+	visibility:hidden
+}
+.slick-slide {
+	display:none;
+	float:left;
+	height:100%;
+	text-align: center;
+	min-height:1px
+}
+[dir='rtl'] .slick-slide {
+	float:left
+}
+.slick-slide .testimonal-img {
+	display:block;
+	border-radius: 100%;
+	transform: scale(0.7);
+}
+.slick-slide.slick-loading img {
+	display:none
+}
+.slick-slide.dragging img {
+	pointer-events:none
+}
+.slick-initialized .slick-slide {
+	display:block
+}
+.slick-loading .slick-slide {
+	visibility:hidden
+}
+.slick-vertical .slick-slide {
+	display:block;
+	height:auto;
+	border:1px solid transparent
+}
+.slick-arrow.slick-hidden {
+	display:none
+}
+@charset 'UTF-8';
+.slick-loading .slick-list {
+	background:#fff url(../img/ajax-loader.gif) center center no-repeat
+}
+@font-face {
+font-family:'slick';
+font-weight:400;
+font-style:normal;
+src:url(../fonts/slick.eot);
+src:url('../fonts/slick.eot?#iefix') format('embedded-opentype'), url(../fonts/slick.woff) format('woff'), url(../fonts/slick.ttf) format('truetype'), url('../fonts/slick.svg#slick') format('svg')
+}
+.slick-dotted.slick-slider {
+	margin-bottom:30px
+}
+.slick-dots {
+	position:absolute;
+	bottom:0;
+	left:0;
+	display:block;
+	width:100%;
+	padding:0;
+	margin:0;
+	list-style:none;
+	text-align:center
+}
+.testimonial-for .slick-dots {
+	bottom:-25px;
+}
+/*.slick-dots li {
+	position:relative;
+	display:inline-block;
+	width:20px;
+	height:20px;
+	margin:0 5px;
+	padding:0;
+	cursor:pointer
+}*/
+.slick-dots > li {
+	display:inline-block;
+	margin:0 3px
+}
+.slick-dots > li button {
+	font-size:0;
+	line-height:0;
+	display:block;
+	width:14px;
+	height:14px;
+	border-radius:50%;
+	cursor:pointer;
+	color:transparent;
+	border:0;
+	outline:none;
+	background-color:#777
+}
+.slick-dots li button:hover, .slick-dots li button:focus {
+	outline:none
+}
+.slick-dots li.slick-active button,
+.slick-dots li button:hover, .slick-dots li button:focus {
+	background-color:#52bf28
+}
+/*.slick-dots li button:before {
+	font-family:'slick';
+	font-size:6px;
+	line-height:20px;
+	position:absolute;
+	top:0;
+	left:0;
+	width:20px;
+	height:20px;
+	content:'â€¢';
+	text-align:center;
+	
+	color:black;
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale
+}*/
+.slick-dots li.slick-active button:before {
+	opacity:.75;
+	color:black
+}
+/* */
+.testimonial-style-5.testimonial-slider-2 .testimonal-img img {
+	border-radius:50%
+}
+.testimonial-style-5.testimonial-slider-2 .testimonal-img {
+	text-align: center;	
+    overflow: hidden;
+	padding:6px;
+    max-width: 135px;
+}
+.testimonial-style-5.testimonial-slider-2 .testimonial-for {
+	padding: 0 15%;
+}
+ @media only screen and (min-width: 768px) and (max-width: 991px) {
+ .testimonial-style-5.testimonial-slider-2 .testimonial-for {
+ padding: 0;
+}
+}
+ @media only screen and (max-width: 767px) {
+ .testimonial-style-5.testimonial-slider-2 .testimonial-for {
+ padding: 0;
+}
+}
+.testimonial-style-5.testimonial-slider-2 .testimonial-for .testimonial-desc {
+	/*background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 30px;
+	margin-top: 30px;
+	margin-left: 6px;
+	color: #fff;*/
+	position: relative;
+}
+.testimonial-style-5.testimonial-slider-2 .testimonial-for .testimonial-desc .triangle {
+	position: absolute;
+	bottom: 100%;
+	margin-top: -1px;
+	border-right: 20px solid transparent;
+	border-left: 20px solid transparent;
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid #fff;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.testimonial-desc .client h3 {
+	text-align: center;
+}
+.testimonial-style-5.testimonial-slider-2 .testimonial-for .testimonial-desc .client ul.rating {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	justify-content: center;
+	list-style: none;
+	margin-bottom: 10px;
+}
+.testimonial-style-5.testimonial-slider-2 .testimonial-for .testimonial-desc .client ul.rating li {
+	color: #f1c30d;
+	font-size: 17px;
+	margin: 0 2px;
+}
+.testimonial-style-5.testimonial-slider-2 .slick-slide:not(.slick-center) .testimonal-img:hover {
+	transform: scale(0.8);
+}
+.testimonial-style-5.testimonial-slider-2 .slick-slide.slick-active.slick-center .testimonal-img {
+	transform: scale(1);
+}
+.testimonial-style-5.testimonial-slider-2 .slick-slide {
+	padding: 4px 0;
+}
+/*----------------------------------
+    Testimonial Style 5
+-------------------------------------*/
+.testimonial-for .testimonial-desc p {
+	text-align: center;
+	padding: 0 10%;
+}
+.testimonal-img {
+	margin: 0 auto;
+	text-align: center;
+}
+.testimonal-img .content {
+	text-align: center;
+	margin-top: 22px;
+}
+.testimonal-img .content h4 {
+	color: #3e3e3e;
+	font-size: 20px;
+	margin-bottom: 3px;
+}
+.testimonal-img .content span {
+	color: #3e3e3e;
+	font-size: 18px;
+	line-height: 29px;
+}
+.testimonal-nav.slick-slider {
+	max-width: 30%;
+	width: 100%;
+	margin: 0 auto;
+}
+.slick-slide.slick-active.slick-center .testimonal-img {
+	transform: scale(1);
+}
+.slick-slide.slick-active .testimonal-img {
+	text-align: center;
+	display: block;
+	border-radius: 50%;
+	transition: all .4s ease 0s;
+}
+.testimonal-nav .slick-slide:not(.slick-center) .content {
+ display: none;
+}
+.testimonial-style-5 .testimonial-shape {
+	bottom: 56%;
+	left: 49.5%;
+	position: absolute;
+	transform: translateX(-50%);
+}
+/* */
+
+.client > .star-rating {
+	display:block;
+	margin-bottom: 20px;
+	text-align:center
+}
+
+
+
+
+/* END CSS */

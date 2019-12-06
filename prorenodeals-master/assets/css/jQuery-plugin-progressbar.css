@@ -1,0 +1,57 @@
+.position {
+  margin: 10px auto;
+}
+
+.circle-bar {
+  position: relative;
+  height: 70px;
+  width: 70px;
+}
+
+.circle-bar div {
+  position: absolute;
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+}
+
+.circle-bar div span {
+  position: absolute;
+  font-size: 15px;
+  line-height: 60px;
+  height: 60px;
+  width: 60px;
+  left: 5px;
+  top: 5px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.circle-bar .background { background-color: #b3cef6; }
+
+.circle-bar .rotate {
+  clip: rect(0 35px 70px 0);
+  background-color: #4b86db;
+}
+
+.circle-bar .left {
+  clip: rect(0 35px 70px 0);
+  opacity: 1;
+  background-color: #b3cef6;
+}
+
+.circle-bar .right {
+  clip: rect(0 35px 70px 0);
+  transform: rotate(180deg);
+  opacity: 0;
+  background-color: #4b86db;
+}
+ @keyframes 
+toggle {  0% {
+ opacity: 0;
+}
+ 100% {
+ opacity: 1;
+}
+}

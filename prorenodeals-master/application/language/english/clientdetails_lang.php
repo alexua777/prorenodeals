@@ -1,0 +1,56 @@
+<?php
+$lang['clientdetails_sidebar_approved']='Approved';
+$lang['clientdetails_sidebar_edit']='Edit';
+$lang['clientdetails_sidebar_last_logged_on']='Last logged on';
+$lang['clientdetails_sidebar_posted_job']='Posted Job';
+$lang['clientdetails_sidebar_total_spent']='Total Spent';
+$lang['clientdetails_sidebar_hourly_rate']='Hourly Rate';
+$lang['clientdetails_sidebar_amount_earned']='Amount Earned';
+$lang['clientdetails_sidebar_send_message']='Send Message';
+$lang['clientdetails_sidebar_select_your_project_to_invite_freelancer']='Select Your project to invite freelancer';
+$lang['clientdetails_sidebar_invite']='Invite';
+$lang['clientdetails_sidebar_send_message_to_freelancer']='Send message to freelancer';
+$lang['clientdetails_sidebar_select_your_project']='Select Your Project';
+$lang['clientdetails_sidebar_your_message']='Your Message';
+$lang['clientdetails_sidebar_enter_your_message_first']='Enter Your Message First';
+$lang['clientdetails_sidebar_you_dont_have_any_open_projects_to_invite']='You dont have any open projects to invite';
+$lang['clientdetails_sidebar_you_dont_have_any_projects']='You dont have any open projects';
+$lang['clientdetails_sidebar_your_message_send_successfully']='Your Message Send Successfully.';
+
+
+$lang['talentdetails_facebook_connected']='Facebook Connected';
+$lang['talentdetails_facebook_payment_verified']='Payment Verified';
+$lang['talentdetails_verified']='Verified';
+$lang['talentdetails_unverified']='Unverify';
+$lang['talentdetails_email_verified']='Email Verified';
+$lang['talentdetails_email_overview']='Overview';
+$lang['talentdetails_work_experience']='Work Experience';
+$lang['talentdetails_no_experience_added_yet']='No experience added yet';
+$lang['talentdetails_education']='Education';
+$lang['talentdetails_you_have_not_added_any_education_yet']='You have not added any education yet';
+$lang['talentdetails_skills_and_knowledge']='Skills & Knowledge';
+$lang['talentdetails_skills']='Skills';
+$lang['talentdetails_no_skill_set_yet']='No Skill Set Yet';
+$lang['talentdetails_certificate']='Certificates';
+$lang['talentdetails_month']='month';
+$lang['talentdetails_no_certificates_added']='No certificates added';
+$lang['talentdetails_portfolio']='Portfolio';
+$lang['talentdetails_other_portfolio']='Other Portfolio';
+$lang['talentdetails_reviews_and_ratings']='Reviews & Ratings';
+$lang['talentdetails_no_review_yet']='No Review Yet';
+$lang['talentdetails_my_top_skills']='My Top Skills';
+$lang['talentdetails_no_skills_found']='No Skills found';
+$lang['talentdetails_phone_verified']='Phone Verified';
+$lang['talentdetails_emp_job_history']='Job History';
+$lang['talentdetails_emp_completed_project']='Completed project';
+$lang['talentdetails_emp_posted_on']='Posted on';
+$lang['talentdetails_emp_no_completed_projects']='No completed project';
+$lang['talentdetails_emp_open_projects']='Open project';
+$lang['talentdetails_emp_no_open_projects']='No open project';
+$lang['talentdetails_emp_reviews_and_rating']='Reviews & Ratings';
+$lang['talentdetails_emp_no_reviews_yet']='No Review Yet';
+$lang['talentdetails_emp_get_certificate']='Get Certified';
+$lang['talentdetails_emp_you_do_not_have_any_certificate']='You do not have any certifications.';
+$lang['talentdetails_emp_my_top_skills']='My Top Skills';
+$lang['talentdetails_emp_no_skills_found']='No Skills found';
+?>

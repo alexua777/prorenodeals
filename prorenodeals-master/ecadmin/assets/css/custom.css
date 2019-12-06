@@ -1,0 +1,25 @@
+.pointer_class
+{
+    cursor: pointer;
+}
+
+.safetybox {
+border: 0 solid #000;
+float: left;
+margin: 0 0 11px;
+padding: 0;
+width: 50%;
+}
+
+.safetybox p {
+color: #333333;
+float: left;
+font-size: 14px;
+font-weight: normal;
+font-family: "Open Sans",Helvetica,Arial,sans-serif;
+margin: 0 0 0 4px;
+padding: 8px 12px 4px 0;
+text-align: right;
+width: 33%;
+line-height: 18px;
+}

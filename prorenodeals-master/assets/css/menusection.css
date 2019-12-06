@@ -1,0 +1,373 @@
+@charset "utf-8";
+/* CSS Document */
+
+.quicknav {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 280px;
+	background-color: #1e2635;      /* overflow-y: scroll; */
+	z-index: 99999;
+}
+li a.Noback {
+	background:none !important;/*color:#fff !important;*/
+}
+.ecdevsec .sidebar {
+	z-index: 1022;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	width: 280px;
+	background-color: #52bf28;
+	overflow-y: scroll;
+}
+.ecdevsec .user-sidebar {
+	overflow: auto;
+}
+.has-open-user-sidebar .ecdevsec .user-sidebar {
+	right: 0;
+}
+.ecdevsec .user-sidebar-info {
+	padding: 25px;
+	background-color: #52bf28;
+	text-align: center;
+}
+.ecdevsec .sidebar-nav {
+	background-color:#52bf28;
+}
+.ecdevsec .user-sidebar-container .sidebar-close-alt {
+	position: absolute;
+	cursor: pointer;
+	top: 15px;
+	color: #52bf28;
+	background-color: #fff;
+	text-align: center;
+	border-radius: 50%;
+	width: 26px;
+	line-height: 26px;
+	font-size: 26px;
+	height: 26px;
+}
+.ecdevsec a {
+	text-decoration: none;
+	cursor: pointer;
+}
+.ecdevsec .sidebar-link {
+ -webkit-transition: all .1s cubic-bezier(.55, .085, .68, .53);
+ -moz-transition: all .1s cubic-bezier(.55, .085, .68, .53);
+ -ms-transition: all .1s cubic-bezier(.55, .085, .68, .53);
+ -o-transition: all .1s cubic-bezier(.55, .085, .68, .53);
+ transition: all .1s cubic-bezier(.55, .085, .68, .53);
+	position: relative;
+	display: block;
+}
+.ecdevsec .sidebar-link .fa, .ecdevsec .sidebar-link .zmdi {
+	width: 16px;
+	text-align: center;
+}
+.quicknav li a {
+	-webkit-transition:border 150ms ease-in-out, background-color 150ms ease-in-out;
+	-moz-transition:border 150ms ease-in-out, background-color 150ms ease-in-out;
+	-o-transition:border 150ms ease-in-out, background-color 150ms ease-in-out;
+	-ms-transition:border 150ms ease-in-out, background-color 150ms ease-in-out;
+	transition:border 150ms ease-in-out, background-color 150ms ease-in-out;
+}
+.quicknav ul {
+	overflow:hidden;
+	z-index:999;
+}
+.quicknav>ul li:hover>a {
+	border-bottom:0;
+	background:transparent;
+}
+.quicknav ul li {
+	margin:0;
+	padding:0;
+	width:100%;
+}
+.quicknav ul li a {
+	color:#fff;
+	font-size:13px;
+	line-height:18px;
+	padding: 10px 15px;
+ -webkit-transition: all .4s ease-in-out;
+ -moz-transition: all .4s ease-in-out;
+ -o-transition: all .4s ease-in-out;
+ -ms-transition: all .4s ease-in-out;
+ transition: all .4s ease-in-out;
+}
+.quicknav ul li {
+	border-top:1px solid #42ac1a;
+}
+.quicknav ul li:first-child {
+	border:0;
+}
+.quicknav ul li a:hover {
+	color:#fff;
+	background-color:#42ac1a;
+	border:0;
+	padding-left:21px !important;
+}
+.quicknav ul li a:last-child:hover {
+}
+/*************************************/
+
+.profileSe {
+	width: 300px;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+}
+.oDropdown {
+	display: inline-block;
+	position: relative;
+	cursor: pointer;
+	line-height: 1.5em;
+}
+.profileSe {
+	margin: 0;
+	border-radius: 4px;
+	position: absolute;
+	z-index: 10000;
+ -webkit-transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s linear;
+ -webkit-transition-delay: 0s, 0s, .1s;
+ -moz-transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s linear .1s;
+ -o-transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s linear .1s;
+ transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s linear .1s;
+	opacity: 1;
+	right: 40px;
+	top: 75px;
+	position: fixed;
+}
+.secentList {
+	margin:0
+}
+.secentList>li {
+	position: relative;
+}
+.secentList>li>a {
+	margin-top:-1px;
+}
+.secentListItem {
+	background-color: #fff;
+	font-weight: 400;
+	position:relative;
+	display: block;
+	background: #fff;
+	padding:10px 15px;
+	border: 1px solid #e0e0e0;
+	border-top-width: 1px;
+	border-bottom-width: 1px;
+}
+.secentListItem:hover, .secentListItem:active {
+	border:1px solid #52bf28;
+	padding:10px 15px;
+	z-index: 100;
+}
+.secentListItem .fa {
+	margin-right:20px;
+}
+
+.header-notifications-dropdown {
+	z-index: 10000;
+	background-color:#fff;
+	opacity: 100;
+	top: 65px;
+	position: fixed;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+	display:none;
+	max-width:360px
+}
+.header-notifications-headline {
+	border-bottom: 1px solid #e0e0e0;
+    padding: 15px;
+}
+.header-notifications-headline > h4 {
+    margin:0
+}
+.header-notifications-dropdown .btn-site {
+	border-radius: 0;
+}
+ul.notiH {
+	cursor: default;
+	margin: 0;
+	background-color:#fff;
+	opacity: 100;
+	/*position: fixed;*/
+	overflow: auto;
+	max-height: 300px;
+}
+ul.notiH li {
+	border-bottom: 1px solid #e0e0e0;
+}
+ul.notiH li > a {
+	padding: 10px 15px;
+	display:block;
+	font-size: 0.933rem;
+    color: #333;
+}
+ul.notiH li > a:hover {
+    color: #52bf28;
+}
+ul.notiH li a.read {
+	background-color: #eee;
+}
+ul.notiH li a.unread {
+    font-weight: 500;
+}
+
+ul.notiH:before {
+	border-color: transparent transparent #ccc;
+	border-style: solid;
+	border-width: 0 11px 11px;
+	content: " ";
+	display: inline-block;
+	height: 0;
+	position: absolute;
+	right: 85px;
+	top: -11px;
+	width: 0;
+	-webkit-transform: scaleX(-1);
+	-moz-transform: scaleX(-1);
+	-ms-transform: scaleX(-1);
+	-o-transform: scaleX(-1);
+	transform: scaleX(-1);
+}
+.profileSe:before, .profileSe:after {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	border-color: transparent transparent #ccc;
+	border-style: solid;
+	border-width: 0 11px 11px;
+	top: -11px;
+	left: auto;
+	right: 20px;
+}
+.profileSe:after {
+	top: -19px;
+	border-width: 10px;
+	border-bottom-color: #fff;
+	right: 21px;
+}
+.oNavAvatarIcon {
+	height: 30px;
+	width: 30px;
+	margin-right: 10px;
+	padding: 11px 15px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.oNavInline .profileSe {
+	top: 62px;
+}
+ .oDropdownValue.isActive~.profileSe {
+ opacity: 1;
+ top: 43px;
+ right: 2px;
+ -webkit-transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s ease-in-out;
+ -moz-transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s ease-in-out;
+ -o-transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s ease-in-out;
+ transition: opacity .1s ease-in-out, top .1s ease-in-out, right 0s ease-in-out;
+}
+.oHeader .oTwizzlr .profileSe {
+	width: 350px;
+	border-radius: 2px;
+	box-shadow: 0 5px 5px rgba(0, 0, 0, .15);
+}
+ .oNavInline .oDropdownValue.isActive~.profileSe {
+ top: 52px;
+}
+ .oHeader .oTwizzlr .oDropdownValue.isActive~.profileSe {
+ right: 0;
+ top: 66px;
+}
+.profileSetop {
+	padding: 20px;
+	/*border: 1px solid #e0e0e0;*/
+
+	border-bottom: 0;
+	background: #fff;
+}
+.BtN, .oMenuButton .oMtnAction, .oMenuButton .oMtnClear {
+	cursor: pointer;
+	border: 0;
+	display: inline-block;
+	background: transparent;
+	line-height: 24px;
+	border-radius: 2px;
+	outline: 0;
+	background-clip: padding-box;
+	padding: 5px 14px;
+	white-space: nowrap;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: always;
+}
+.btnSec, .oMenuButton .oMtnAction {
+	color: #00a651;
+	background: #fff;
+	border: 2px solid #ccc;
+	height: 35px;
+	vertical-align: middle;
+	line-height: 20px;
+	font-weight: 400!important;
+}
+.profileSetopBTN>input+label {
+	padding: 6px 15px;
+	background: #ccc;
+	color: #494949;
+	text-align: center;
+	font-weight: 400;
+	cursor: pointer;
+	margin-right: -4px;
+}
+.BtN:hover, .oMenuButton .oMtnAction:hover, .oMenuButton .oMtnClear:hover {
+	text-decoration: none;
+}
+.profileSetop .profileSetopBTN label {
+	width: 50%;
+	background: #fff;
+}
+.profileSetopBTN>input {
+	position: absolute;
+	visibility: hidden;
+}
+.profileSetopBTN>input+label:first-of-type {
+	border-radius: 2px 0 0 2px;
+}
+.profileSetopBTN>input:checked+label, .profileSetopBTN>input:focus+label {
+	background: #00a651;
+	color: #fff;
+}
+.profileSetop .profileSetopBTN label:hover {
+	color: #00a651;
+	border-color: #ccc;
+}
+.profileSetop .profileSetopBTN>input:checked+label {
+	border-color: #00a651;
+}
+.profileSetop .profileSetopBTN>input:checked+label:hover {
+	color: #fff;
+}
+.profileSetop .profileSetopBTN {
+	width: 100%;
+}
+.profileSetopBTN {
+	vertical-align: middle;
+	display: inline-block;
+	white-space: nowrap;
+}
+.user-sidebar-name {
+	color:#fff;
+}
+
+@media (max-width: 991px) {
+.header-notifications-dropdown {
+	left: 15px !important;
+    max-width: calc(100% - 30px);
+    width: 100%;
+}
+}
+
+/**************************************************************/

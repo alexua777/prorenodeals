@@ -1,0 +1,16 @@
+[06-Jun-2019 14:48:01 Asia/Calcutta] PHP Parse error:  syntax error, unexpected 'date' (T_STRING) in /home1/demosank/public_html/prorenodeals/ecadmin/application/modules/fund/controllers/Fund.php on line 1991
+[06-Jun-2019 14:48:45 Asia/Calcutta] PHP Fatal error:  Call to undefined function array_to_csv() in /home1/demosank/public_html/prorenodeals/ecadmin/application/modules/fund/controllers/Fund.php on line 1991
+[06-Jun-2019 15:58:23 Asia/Calcutta] PHP Fatal error:  Class 'Skills_model_new' not found in /home1/demosank/public_html/prorenodeals/ecadmin/application/third_party/MX/Loader.php on line 225
+[10-Jun-2019 15:07:05 Asia/Calcutta] PHP Fatal error:  Class 'Member_model' not found in /home1/demosank/public_html/prorenodeals/ecadmin/application/third_party/MX/Loader.php on line 225
+[15-Jun-2019 11:17:11 Asia/Calcutta] PHP Parse error:  syntax error, unexpected ';' in /home1/demosank/public_html/prorenodeals/ecadmin/application/modules/user_support/views/list.php on line 70
+[17-Jun-2019 15:09:39 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '}' in /home1/demosank/public_html/prorenodeals/ecadmin/application/modules/report_abuse/models/Report_abuse_model.php on line 29
+[17-Jun-2019 15:10:11 Asia/Calcutta] PHP Fatal error:  Class 'Report_abuse_model' not found in /home1/demosank/public_html/prorenodeals/ecadmin/application/third_party/MX/Loader.php on line 225
+[17-Jun-2019 15:10:13 Asia/Calcutta] PHP Fatal error:  Class 'Report_abuse_model' not found in /home1/demosank/public_html/prorenodeals/ecadmin/application/third_party/MX/Loader.php on line 225
+[17-Jun-2019 15:10:30 Asia/Calcutta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::result_array() in /home1/demosank/public_html/prorenodeals/ecadmin/application/modules/report_abuse/models/Report_abuse_model.php on line 21
+[17-Jun-2019 15:10:46 Asia/Calcutta] PHP Fatal error:  Call to undefined method CI_DB_mysqli_driver::results_array() in /home1/demosank/public_html/prorenodeals/ecadmin/application/modules/report_abuse/models/Report_abuse_model.php on line 21
+[09-Aug-2019 19:39:17 America/Toronto] Wallet Error ! Wallet ID # : 2 after transaction #607
+[17-Sep-2019 04:14:13 America/Toronto] Wallet Error ! Wallet ID # : 183 after transaction #650
+[17-Sep-2019 04:14:13 America/Toronto] Wallet Error ! Wallet ID # : 178 after transaction #650
+[17-Sep-2019 04:14:13 America/Toronto] Wallet Error ! Wallet ID # : 3 after transaction #650
+[17-Sep-2019 04:14:13 America/Toronto] Wallet Error ! Wallet ID # : 2 after transaction #650
+[07-Oct-2019 17:31:44 America/Toronto] Wallet Error ! Wallet ID # : 190 after transaction #688
