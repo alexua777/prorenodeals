@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // enable/disable library (default value: 'TRUE')
 // when enabled === FALSE library return assets without compilation and compression 
 // usefull when debugging or in development environment
-$config['enabled'] = FALSE;
+$config['enabled'] = TRUE;
 
 // output path where the compiled files will be stored (default value: 'assets')
 $config['assets_dir'] = 'assets/minify';
