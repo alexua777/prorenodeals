@@ -214,5 +214,19 @@ function &DB($params = '', $query_builder_override = NULL)
 	}
 
 	$DB->initialize();
+	if (isset($params['stricton']) && $params['stricton'] == TRUE)
+	{
+		$DB->query('SET SESSION sql_mode="STRICT_ALL_TABLES"');
+	}else{
+		$DB->query('SET SESSION sql_mode =
+					REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+					@@sql_mode,
+					"STRICT_ALL_TABLES,", ""),
+					",STRICT_ALL_TABLES", ""),
+					"STRICT_ALL_TABLES", ""),
+					"STRICT_TRANS_TABLES,", ""),
+					",STRICT_TRANS_TABLES", ""),
+					"STRICT_TRANS_TABLES", "")');
+	}
 	return $DB;
 }
