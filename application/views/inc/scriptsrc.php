@@ -27,6 +27,9 @@ if(isset($meta_tag)){
 <?php
 }
 ?>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+</style>
 <?php
 $this->load->config('minify', TRUE, TRUE);
 
