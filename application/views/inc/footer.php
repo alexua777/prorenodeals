@@ -593,13 +593,16 @@ console.log(is_open_notification); */
 
 
 <?php
- if($current_page!='home'){
+$pagemethod=$this->router->fetch_method();
+$pageclass=$this->router->fetch_class();
+if($pageclass=='user' && $pagemethod=='index'){
+	$footerjs=array('superfish.js','jquery.gmap.min.js','custom.js'); 
+}else{
+ 	$this->minify->enabled = FALSE;
 	$footerjs=array('superfish.js', 'tytabs.js','jquery.gmap.min.js','circularnav.js','imagesloaded.pkgd.min.js','jflickrfeed.js','waypoints.min.js','spectrum.js','custom.js'); 
- }else{
-	$footerjs=array('custom.js'); 
  }
-$this->minify->js($footerjs);
-		echo $this->minify->deploy_js(FALSE, 'footer.min.js');
+$this->minify->js($footerjs,'footer');
+echo $this->minify->deploy_js(true, 'footer.min.js','footer');
 ?>
 
 <script>
