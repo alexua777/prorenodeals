@@ -348,7 +348,7 @@ $this->load->library('user_agent');
             <span>Bathroom</span> <span>Interior Design</span>         
           </div>                          
         </div>
-        <div class="card-footer">Earned: <b>$2500</b> </div>
+        <div class="card-footer">Earned: <b><?php echo CURRENCY;?> <?php echo round(get_earned_amount($v['user_id']));?></b> </div>
         </div>
       <!--<article class="col-xl-3 col-lg-4 col-md-6 col-12" data-effect="slide-left">
         
