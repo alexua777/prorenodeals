@@ -689,6 +689,8 @@ jQuery(window).scroll(function(){
 
 			var oneHalfStar = starsOutput('star','star half','star empty','star empty','star empty');
 			var oneStar = starsOutput('star','star empty','star empty','star empty','star empty');
+			var HalfStar = starsOutput('star half','star empty','star empty','star empty','star empty');
+			var zeroStar = starsOutput('star empty','star empty','star empty','star empty','star empty');
 
 			// Rules
 	        if (dataRating >= 4.75) {
@@ -707,9 +709,13 @@ jQuery(window).scroll(function(){
 	            $(this).append(twoStars);
 	        } else if (dataRating >= 1.25) {
 	            $(this).append(oneHalfStar);
-	        } else if (dataRating < 1.25) {
+	        } else if (dataRating > .75) {
 	            $(this).append(oneStar);
-	        }
+	        } else if (dataRating > .25) {
+	            $(this).append(HalfStar);
+	        }else{
+				$(this).append(zeroStar);
+			}
 
 		});
 

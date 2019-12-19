@@ -21,7 +21,7 @@ class Faq_Help extends MX_Controller {
                                 'title'=>'FAQ','path'=>''
                         )
                 );
-			$data = '';
+			$data = array();
 			$data['breadcrumb']=$this->autoload_model->breadcrumb($breadcrumb,'FAQ');
 			$head['current_page']='faq_help';
 			$head['ad_page']='faq';
