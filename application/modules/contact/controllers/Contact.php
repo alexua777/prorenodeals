@@ -21,7 +21,7 @@ class Contact extends MX_Controller {
 								'title'=>'Contact','path'=>''
 							)
 						);
-			$data = '';
+			$data = array();
 			$data['address']=$this->autoload_model->getFeild('corporate_address','setting','id',1);
 			$data['contact_no']=$this->autoload_model->getFeild('contact_no','setting','id',1);
 			$data['telephone']=$this->autoload_model->getFeild('office_no','setting','id',1);
