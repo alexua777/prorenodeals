@@ -303,7 +303,7 @@ $this->load->library('user_agent');
           <div class="works-process">
               <img src="<?=IMAGE?>icon_job.png" alt="" />
               <h4><?php echo __('home_qw','Get The Job Done'); ?></h4>
-              <p><?php echo __('home_work_textas','When your project is complete, all you need to do is release the payment held with our highly secure system to your contractor, leave a review and enjoy your freshly renovated home!'); ?></p>
+              <p><?php echo __('home_work_textas','When your project is complete, all you need to do is to release the payment held with our highly secure system to your contractor, leave a review and enjoy your freshly renovated home!'); ?></p>
           </div>
         </div>
         
