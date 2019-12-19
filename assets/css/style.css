@@ -4963,7 +4963,7 @@ a.message-action:hover {
 	position: relative;
 }
  .messages-inbox ul li:nth-child(2n) {
- background-color: #fafafa;
+ /*background-color: #fafafa;*/
 }
 .messages-inbox ul li:last-child {
 	border-bottom: none;
