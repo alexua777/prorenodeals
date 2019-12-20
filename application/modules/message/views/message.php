@@ -794,7 +794,7 @@ function refresh_chat(){
 	var projectid = $('#project_id').val(); 
 	$.get("<?php echo VPATH;?>message/update_msg" , function(data){
 		if(data == 1){
-			$('#select_msg').change();
+			//$('#select_msg').change();
 			loadUnreadMsg(projectid,senderid);
 			/* rampage(projectid,senderid); */
 		}
@@ -804,7 +804,7 @@ function refresh_chat(){
 function loadUnreadMsg(projectid,senderid){
 	$.get('<?php echo base_url('message/unread_msg');?>?project_id='+projectid+'&user_id='+senderid, function(res){
 		if(res != 0){
-			$('#load_conversation').find('.message-content-inner').append(res);
+			$('#load_conversation').append(res);
 			myscroll();
 			$('#msg_project_'+projectid).find('.msg-count').hide();
 			$('#msg_wrap').find('.msg_unseen_icon').attr('class', 'zmdi zmdi-check-all site-text msg_seen_icon');
