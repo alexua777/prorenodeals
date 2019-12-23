@@ -561,6 +561,11 @@ class User extends MX_Controller {
 				 
 					$insert=$this->auto_model->insert_data("news_users",$data);
 					if($insert){ 
+					
+					$template = 'new-subscribe';
+					$to = $email;
+					$data_parse = array();
+					send_layout_mail($template, $data_parse, $to);
 					  echo 1;
 					}
 					else{ 

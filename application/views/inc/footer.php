@@ -36,7 +36,7 @@ $lang = $this->session->userdata('lang');
           <h4><?php echo __('popular_','Company'); ?></h4>
           <ul class="foot-nav">
             <li><a href="<?=VPATH?>information/info/about_us/" <? if($current_page=="about_us"){?>id="current"<? }?>><?php echo __('about_us','About Us'); ?></a></li>
-            <li><a href="<?php echo VPATH;?>knowledgebase/" <? if($current_page=="knowledge_base"){?>id="current"<? }?>><?php echo __('success_tips','Success Tips'); ?></a></li>
+           <!-- <li><a href="<?php echo VPATH;?>knowledgebase/" <? if($current_page=="knowledge_base"){?>id="current"<? }?>><?php echo __('success_tips','Success Tips'); ?></a></li>-->
             <?php  foreach($popular as $vals){ ?>
             <?php if($vals->faq=='Y'){ ?>
             <li><a href="<?php echo  base_url()?>faq_help"><?php echo __('faqs','FAQs'); ?></a></li>
