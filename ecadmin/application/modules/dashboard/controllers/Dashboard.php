@@ -18,7 +18,7 @@ class Dashboard extends MX_Controller {
 		$data['total_member'] = $this->user_model->count_member();
 		$data['active_member'] = $this->user_model->count_member('Y');
 		$data['inactive_member'] = $this->user_model->count_member('N');
-		$data['suspended_member'] = $this->user_model->count_member('S');
+		$data['suspended_member'] = $this->user_model->count_member('C');
         $data['total_project'] = $this->user_model->count_project();
 		$data['open_project'] = $this->user_model->count_project('O');
 		$data['working_project'] = $this->user_model->count_project('P');

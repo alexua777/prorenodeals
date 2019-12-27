@@ -439,7 +439,8 @@ class User_model extends BaseModel {
 		$this->db->select('u.user_id,u.fname,u.lname,u.gender,u.country,u.city,u.logo,slogan,avg(r.average) as average_rating')
 				->from('user u')
 				->join('review_new r' , "r.review_to_user=u.user_id" , "LEFT")
-				->where('u.account_type', 'F');
+				->where('u.account_type', 'F')
+				->where('u.status', 'Y');
 				/* ->where('u.featured', 1); */
 		$this->db->group_by('u.user_id');
 		$this->db->order_by('u.featured', 'DESC');
