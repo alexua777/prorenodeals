@@ -455,7 +455,7 @@ class References extends MX_Controller {
 		$this->db->query("INSERT INTO serv_wallet SET `title`='Membership wallet', `balance`='0'");
 		/* $this->db->query("UPDATE `serv_finance_constants` SET `value` = '4' WHERE `key` = 'MEMBERSHIP_WALLET';"); */
 		
-		
+		echo 'Complete';
 		
 	}
 	
