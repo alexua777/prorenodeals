@@ -368,7 +368,7 @@ class References extends MX_Controller {
 			'dispute',
 			'dispute_conversation',
 			'dispute_discussion',
-			'dispute_history',
+			/*'dispute_history',*/
 			'dispute_messages',
 			'disute_history',
 			'entry_comment',
