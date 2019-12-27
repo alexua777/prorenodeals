@@ -25,6 +25,7 @@
                             <div class="percentage" data-percent="100"><span>100</span></div>
                                 <div class="txt">Total <?php echo $total_member;?></div>
                             </div>
+							<?php if($total_member == 0){$total_member=1;}?>
                             <div class="items">
                                 <div class="percentage-green" data-percent="<?php echo ($active_member/$total_member)*100;?>"><span><?php echo floor(($active_member/$total_member)*100);?></span>%</div>
                                 <div class="txt">Active <?php echo $active_member;?></div>
@@ -369,6 +370,7 @@
                                     <div class="percentage" data-percent="100"><span>100</span></div>
                                         <div class="txt">Total Project <?php echo $total_project;?></div>
                                     </div>
+									<?php if($total_project == 0){$total_project=1;} ?>
                                     <div class="items">
                                         <div class="percentage-green" data-percent="<?php echo ($open_project/$total_project)*100;?>"><span><?php echo floor(($open_project/$total_project)*100);?></span>%</div>
                                         <div class="txt">Open Project <?php echo $open_project;?></div>

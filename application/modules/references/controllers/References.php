@@ -348,6 +348,117 @@ class References extends MX_Controller {
 		}
 		
 	}
+	
+	public function data_cleanup(){
+		
+		$table_array = array(
+			'admin_notification',
+			'answers',
+			'bids',
+			'bonus',
+			'chatroom',
+			'comments',
+			'contest',
+			'contest_comment',
+			'contest_entry',
+			'contest_entry_files',
+			'contest_file_marker',
+			'contest_marker_comment',
+			'contest_skills',
+			'dispute',
+			'dispute_conversation',
+			'dispute_discussion',
+			'dispute_history',
+			'dispute_messages',
+			'disute_history',
+			'entry_comment',
+			'entry_likes',
+			'entry_rating',
+			'escrow',
+			'escrow_new',
+			'favorite',
+			'fav_msg',
+			'feedback',
+			'feedback_end',
+			'hidden_msg',
+			'inviteprivate_project',
+			'invite_friend',
+			'invoice',
+			'invoice_main',
+			'invoice_number',
+			'invoice_row',
+			'jobnotification',
+			'message',
+			'milestone_new',
+			'milestone_payment',
+			'new_bid',
+			'new_inviteproject',
+			'new_user_skill',
+			'notification',
+			'projects',
+			'project_activity',
+			'project_activity_user',
+			'project_answers',
+			'project_invoice',
+			'project_milestone',
+			'project_questions',
+			'project_schedule',
+			'project_skill',
+			'project_start_request',
+			'project_tracker',
+			'project_tracker_manual',
+			'project_tracker_snap',
+			'project_transaction',
+			'questions',
+			'references',
+			'referer_review',
+			'review',
+			'review_new',
+			'room_members',
+			'room_message',
+			'transaction',
+			'transaction_new',
+			'transaction_row',
+			'user',
+			'useraddfund',
+			'userlastlang',
+			'usermembership',
+			'user_affiliate',
+			'user_affiliate_list',
+			'user_affiliate_transaction',
+			'user_bank_account',
+			'user_bank_account_affiliate',
+			'user_cats',
+			'user_certificate',
+			'user_education',
+			'user_experience',
+			'user_portfolio',
+			'user_skills',
+			'user_support',
+			'wallet',
+			'withdrawl',
+			'withdrawl_affiliate',
+		);
+		
+		$prefix = 'serv_';
+		
+		
+		foreach($table_array as $table){
+			$q = "TRUNCATE TABLE ".$prefix.$table;
+			$this->db->query($q);
+		}
+		
+		$this->db->query("INSERT INTO serv_invoice_number SET `key`='invoice', `value`='1'");
+		$this->db->query("INSERT INTO serv_wallet SET `title`='Main wallet', `balance`='0'");
+		$this->db->query("INSERT INTO serv_wallet SET `title`='Profit', `balance`='0'");
+		$this->db->query("INSERT INTO serv_wallet SET `title`='Escrow', `balance`='0'");
+		$this->db->query("INSERT INTO serv_wallet SET `title`='Membership wallet', `balance`='0'");
+		/* $this->db->query("UPDATE `serv_finance_constants` SET `value` = '4' WHERE `key` = 'MEMBERSHIP_WALLET';"); */
+		
+		
+		
+	}
+	
 
 
 
