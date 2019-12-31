@@ -481,7 +481,14 @@ $account_type = $user[0]->account_type;
     </div>               
 
 </section>            
-
+<?php
+$paypal_fixed=PAYPAL_FIXED_FEE;
+if($paypal_fixed>0){
+	
+}else{
+	$paypal_fixed=0;
+}
+?>
 <script> 
 
 
@@ -514,7 +521,7 @@ function setamt(s){
 
 	  amt += commission;
 
-	  amt += parseFloat('<?php echo PAYPAL_FIXED_FEE;?>');  
+	  amt += parseFloat('<?php echo $paypal_fixed;?>');  
 
 	  $("#amount"+s).val(amt.toFixed(2));
 
