@@ -514,7 +514,7 @@ function setamt(s){
 
 	  amt += commission;
 
-	  amt += 0.35;  
+	  amt += parseFloat('<?php echo PAYPAL_FIXED_FEE;?>');  
 
 	  $("#amount"+s).val(amt.toFixed(2));
 
