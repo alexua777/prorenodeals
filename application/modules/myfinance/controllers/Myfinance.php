@@ -245,6 +245,12 @@ class Myfinance extends MX_Controller {
 			$fee = str_replace(',', '', number_format((($net * $paypal_fee_percent)/(100+$paypal_fee_percent)), 2));
 			$net = $net - $fee;
 			$paypal_commission = str_replace(',', '', number_format(($fee + $paypal_fee_fixed), 2));
+			if($this->input->get('cmd')){
+				if($this->input->get('cmd') == 'wallet'){
+					$net=$this->input->post('mc_gross');
+					$paypal_commission=$this->input->post('mc_fee');
+				}
+			}
             $post['status']="Y";
             $post['paypal_transaction_id']=$this->input->post('txn_id');
            /*  $post['amount']=($this->input->post('mc_gross')-$this->input->post('payment_fee')); */
@@ -3827,6 +3833,7 @@ class Myfinance extends MX_Controller {
 			  'card' => $token,
 			  'amount'   => $payamount*100,
 			  'currency' => 'CAD',
+			   "expand" => array("balance_transaction")
 		  ));
 		}catch (Exception $e) {
 			$error = $e->getMessage();
@@ -3834,6 +3841,10 @@ class Myfinance extends MX_Controller {
 		
 		if($charge['paid']){
 			$stripe_fee = get_stripe_fee($payamount);
+			$balance_transaction=$charge['balance_transaction'];
+			if($balance_transaction){
+				$stripe_fee=clean_money_format($balance_transaction['fee']/100);
+			}
 			$this->load->model('transaction_model');
 			$new_txn_id = $this->transaction_model->add_transaction(ADD_FUND_STRIPE,  $user_id);
 			// credit main wallet 

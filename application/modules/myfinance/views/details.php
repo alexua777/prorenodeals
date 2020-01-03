@@ -211,7 +211,7 @@ $account_type = $user[0]->account_type;
 
     $cancel_url = base_url() . 'myfinance/payment_cancel/'. $user_id;
 
-    $notify_url = base_url() . 'myfinance/paypal_notify/'. $user_id;
+    $notify_url = base_url() . 'myfinance/paypal_notify/'. $user_id.'?cmd=wallet';
 
     $paypal_url = '';
 
@@ -515,13 +515,13 @@ function setamt(s){
 
   if(amt > 0){
 
-	 var paypal_commission_percent = parseFloat('<?php echo getField('deposite_by_paypal_commission', 'setting', 'id', 1);?>');
+	 /*var paypal_commission_percent = parseFloat('<?php echo getField('deposite_by_paypal_commission', 'setting', 'id', 1);?>');
 
 	  var commission = ((amt * paypal_commission_percent)/100);
 
 	  amt += commission;
 
-	  amt += parseFloat('<?php echo $paypal_fixed;?>');  
+	  amt += parseFloat('<?php echo $paypal_fixed;?>');  */
 
 	  $("#amount"+s).val(amt.toFixed(2));
 
