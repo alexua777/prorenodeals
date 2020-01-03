@@ -72,7 +72,7 @@ $(window).scrollTop(20);
 </div>
 <?php  } ?>
 
-<div class="row" hidden>
+<div class="row" <?php if($cname){?>hidden<?php }?>>
     <div class="col-sm-6 col-12" hidden>
         <label><?php echo __('dashboard_editprofile_country_name','Country Name'); ?>: *</label>
         <select class="form-control" size="1" id="country" name="country" required onchange="citylist(this.value)">
