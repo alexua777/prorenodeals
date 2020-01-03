@@ -354,11 +354,12 @@ $this->load->library('user_agent');
           	
           	?>
             <span><?php echo $skill_name;?></span>
-        <?php }
-        if($ks==1){
+        <?php if($ks==1){
         	echo '+'.$more.'more';
 			break;
 		}
+		}
+        
         }else{
         ?>
         <?php echo __('findtalents_skills_not_set_yet','Skill Not Set Yet'); ?>
