@@ -436,6 +436,7 @@ class User_model extends BaseModel {
 	}
 	
 	public function get_featured_users($offset=4){
+		$this->load->model('findtalents/findtalents_model');
 		$this->db->select('u.user_id,u.fname,u.lname,u.gender,u.country,u.city,u.logo,slogan,avg(r.average) as average_rating')
 				->from('user u')
 				->join('review_new r' , "r.review_to_user=u.user_id" , "LEFT")
@@ -453,6 +454,7 @@ class User_model extends BaseModel {
 				$result[$k]['user_rating'] = get_user_rating($v['user_id']);
 				$result[$k]['profile_link'] = base_url('clientdetails/showdetails/'.$v['user_id']);
 				$result[$k]['city_name'] = get_city_name($v['city']);
+				$result[$k]['skills'] = $this->findtalents_model->getUserSkills($v['user_id']);
 			}
 			
 		}

@@ -336,6 +336,7 @@ $this->load->library('user_agent');
 			$location[] = get_country_name($v['country']);
 		}
 		$location_view = implode(',', $location);
+		 $skill_list=$v['skills'];
 		?>
         <div class="card team">
         <div class="card-body">
@@ -345,7 +346,13 @@ $this->load->library('user_agent');
           <?php /*?><p>&nbsp;<?php echo $v['slogan'];?>&nbsp;</p><?php */?>
           <p class="text-muted mb-1"><i class="icon-feather-map-pin"></i> <?php echo $location_view;?></p>
           <div class="task-tags">
-            <span>Bathroom</span> <span>Interior Design</span>         
+          <?php  if(count($skill_list)){
+          	foreach($skill_list as $ks => $vs){
+          	$skill_name=$vs['skill_name'];	
+          	
+          	?>
+            <span><?php echo $skill_name;?></span>
+        <?php }}?>
           </div>                          
         </div>
         <div class="card-footer">Earned: <b><?php echo CURRENCY;?> <?php echo round(get_earned_amount($v['user_id']));?></b> </div>
