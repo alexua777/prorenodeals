@@ -347,12 +347,24 @@ $this->load->library('user_agent');
           <p class="text-muted mb-1"><i class="icon-feather-map-pin"></i> <?php echo $location_view;?></p>
           <div class="task-tags">
           <?php  if(count($skill_list)){
+          	$total=count($skill_list);
+          	$more=$total-2;
           	foreach($skill_list as $ks => $vs){
           	$skill_name=$vs['skill_name'];	
           	
           	?>
             <span><?php echo $skill_name;?></span>
-        <?php }}?>
+        <?php }
+        if($ks==1){
+        	echo '+'.$more.'more';
+			break;
+		}
+        }else{
+        ?>
+        <?php echo __('findtalents_skills_not_set_yet','Skill Not Set Yet'); ?>
+        <?php
+        	
+        }?>
           </div>                          
         </div>
         <div class="card-footer">Earned: <b><?php echo CURRENCY;?> <?php echo round(get_earned_amount($v['user_id']));?></b> </div>
