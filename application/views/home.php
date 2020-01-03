@@ -355,7 +355,7 @@ $this->load->library('user_agent');
           	?>
             <span><?php echo $skill_name;?></span>
         <?php if($ks==1){
-        	echo '+'.$more.' more';
+        	echo '<label>+'.$more.' more</label>';
 			break;
 		}
 		}
