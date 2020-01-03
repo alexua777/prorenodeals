@@ -54,7 +54,7 @@ $(window).scrollTop(20);
     </div>
 </div>
 <?php if($account_type == 'F'){?>
-<div class="row" hidden>
+<div class="row" <?php if($company){?>hidden<?php }?>>
 	<div class="col-sm-6 col-12">
 		<div class="form-field">
 			<label>Company name : *</label>
