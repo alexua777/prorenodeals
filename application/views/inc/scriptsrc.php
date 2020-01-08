@@ -121,4 +121,13 @@ if($pageclass=='user' && $pagemethod=='index'){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <?php }?>
 <link rel="stylesheet" href="<?php echo CSS;?>fontawesome-all.min.css">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-155300550-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-155300550-1');
+</script>
 </head>
