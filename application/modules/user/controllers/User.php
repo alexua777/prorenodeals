@@ -89,6 +89,9 @@ class User extends MX_Controller {
 			}
 			
 			if($upd){
+				if(post('acc_type')=='E'){
+					$this->db->where('user_id', $user_id)->update('user', array('verify'=>'Y'));
+				}
 				$user[0]->account_type = post('acc_type');
 				
 				$this->session->unset_userdata('user');

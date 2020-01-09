@@ -45,7 +45,14 @@ class Login extends MX_Controller {
 		/*$uid=base64_decode($this->uri->segment(3));*/
 		$token = $this->uri->segment(3);
 		$new_data['status']='Y';
-		$new_data['verify']='N';
+		$this->db->select('user_id,account_type');
+		$this->db->where('email_verification_link',$token);
+		$result=$this->db->get('user')->row();
+		if($result->account_type=='E'){
+			$new_data['verify']='Y';
+		}else{
+			$new_data['verify']='N';
+		}
 		$new_data['email_verified']='Y';
 
 		$new_data['v_stat']='Y';
