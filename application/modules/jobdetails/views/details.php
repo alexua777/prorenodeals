@@ -296,7 +296,7 @@ $skills = get_results($q);
                 </li>				
               	<li><b>Postal Code:</b> <?php echo $project[0]['postal_code'];?></li>
                 <li>
-                <?php if(!empty($project[0]['attachment'])){ ?>
+                <?php if(!empty($project[0]['attachment']) && $project[0]['attachment']!='undefined'){ ?>
                 <b>Attachments :</b>
                 <?php
                 $attacment = explode(',', $project[0]['attachment']);
@@ -304,10 +304,12 @@ $skills = get_results($q);
                 ?>
                 <ul class="list">
                 <?php foreach($attacment as $file){ 
+                if($file && file_exists(APATH.'assets/postjob_upload/'.$file)){
                 $file_url = base_url('assets/postjob_upload/'.$file);
                 ?>
                 <li><a href="<?php echo $file_url;?>" target="_blank"><?php echo $file;?></a></li>
-                <?php } ?>
+                <?php }
+                } ?>
                 </ul>
                 <?php }else{ ?>
                 <?php } ?>
